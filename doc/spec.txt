@@ -1,0 +1,42 @@
+L'application de test doit comporter 2 ecrans :
+- login
+- principal : liste d'utilisateurs avec CRUD
+Une BDD de test doit etre générée au lancement (>1000 users)
+
+Ecran de login :
+- saisie du login et mdp, validation
+
+Ecran principal :
++ table avec chargement lazy des données (>100 lignes)
+- formulaire permettant d'ajouter editer effacer un objet du tableau
++ boutons edit save delete avec gestion des etats (edit et delete desactivés si pas de ligne selectionnée)
++ formulaire statique permettant l'edition d'un user
++ formulaire generé dynamiquement en fonction des champs de l'objet metier
+- le formulaire doit appliquer les regles de validation metier
+- le formulaire doit afficher un champ calculé qui se met à jour en direct (ex : fullname)
+- simuler un plantage aleatoire de la sauvegarde avec retours utilisateur (popup, ou message) -> gestion du retours utilisateur
+- l'ecran principal doit afficher un menu avec 2 entrées (onglet ou autre), gestion de sous ecrans
+- un champ du formulaire doit afficher un icone qui represente un etat de l'objet (ex : play pause) (renderer)
+- integration des beans avec Spring 3.2 ou CDI ?
+- gestion basique de la securité (acces aux pages privées apres login, gestion d'au moins 2 profils avec droits differents et sous ecrans actifs ou non)
+- mise en place des @PrePersist et @ExternalValidation et integration dans la couche graphique
+- creation d'un nouveau composant fait main (pour etudier la complexité d'implementation)
+- les modifications doivent se répercuter automatiquement sur tous les clients
+- gestion des logs
+- mise en place d'un modele propre MVVM (ou MVP au pire)
+
+Bonus :
+- drap&drop
+- file upload
+- multimedia
+- dessin vectoriel (designer cw)
+
+Tester avec les technos suivantes :
+
+- Jsf 2
+- Vaadin 7
+- DerbyJS
+- Wicket 6.5
+- ZK 6.5
+- EmberJs + Ember Data
+

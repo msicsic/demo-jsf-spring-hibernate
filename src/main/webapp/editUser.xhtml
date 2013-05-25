@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:p="http://primefaces.org/ui" xmlns:f="http://java.sun.com/jsf/core">
+
+    <pe:dynaForm value="#{editUserPanel.model}" var="data">
+
+        <pe:dynaFormControl type="String" for="txt">
+            <p:inputText id="txt" value="#{data.value}" required="#{data.required}"/>
+        </pe:dynaFormControl>
+
+        <pe:dynaFormControl type="Date" for="cal" styleClass="calendar">
+            <p:calendar id="cal" value="#{data.value}" required="#{data.required}" showOn="button"/>
+        </pe:dynaFormControl>
+
+        <pe:dynaFormControl type="Enum" for="sel" styleClass="select">
+            <p:selectOneMenu id="sel" value="#{data.value}" required="#{data.required}">
+                <f:selectItems value="#{data.items}"/>
+            </p:selectOneMenu>
+        </pe:dynaFormControl>
+
+        <pe:dynaFormControl type="LongString" for="tarea">
+            <p:inputTextarea id="tarea" value="#{data.value}" required="#{data.required}" autoResize="true"/>
+        </pe:dynaFormControl>
+
+        <pe:dynaFormControl type="Link" for="rat">
+            <p:selectOneMenu id="link" value="#{data.value}" required="#{data.required}">
+                <f:selectItems value="#{data.items}"/>
+            </p:selectOneMenu>
+        </pe:dynaFormControl>
+
+    </pe:dynaForm>
+    <p:commandButton actionListener="#{editUserPanel.actionCreate}" value="Create" disabled="#{editUserPanel.actionCreateDisabled}"/>
+    <p:commandButton actionListener="#{editUserPanel.execute('edit')}" value="Edit" disabled="#{editUserPanel.actionEditDisabled}"/>
+    <p:commandButton actionListener="#{editUserPanel.execute('save')}" value="Save" disabled="#{editUserPanel.actionSaveDisabled}"/>
+    <p:commandButton actionListener="#{editUserPanel.execute('delete')}" value="Delete" disabled="#{editUserPanel.actionDeleteDisabled}"/>
+    <p:commandButton actionListener="#{editUserPanel.execute('clearSelection')}" value="Clear Selection" disabled="#{editUserPanel.actionClearSelectionDisabled}"/>
+    <p:commandButton actionListener="#{editUserPanel.execute('error')}" value="Generate Error"/>
+
+</ui:composition>

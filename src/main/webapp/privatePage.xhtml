@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:head>
+    <style type="text/css">
+        form {
+            background-color: #ffe4c4;
+            text-align: right;
+            letter-spacing: 0px;
+            color: #000099
+        }
+    </style>
+</h:head>
+<h:body>
+    <p:layout id="refresh" fullPage="false" stateful="false">
+        <p:layoutUnit position="north">
+            Private page<br/>
+            Welcome : #{privatePage.user.firstName}
+        </p:layoutUnit>
+        <!--<p:messages id="messages" showSummary="true"/>-->
+        <h:form id="form" styleClass="form">
+            <p:layoutUnit position="center" size="200">
+                <p:growl id="growl" showDetail="true"/>
+                <p:dataTable id="userTable"
+                             var="user"
+                             value="#{privatePage.userModel}"
+                             paginator="true"
+                             paginatorPosition="bottom"
+                             rows="10"
+                             selection="#{privatePage.selectedUser}"
+                             selectionMode="single"
+                             lazy="true">
+                    <p:ajax event="rowSelect" update=":form"/>
+
+                    <p:column headerText="firstName">
+                        <h:outputText value="#{user.firstName}"/>
+                    </p:column>
+
+                    <p:column headerText="lastName">
+                        <h:outputText value="#{user.lastName}"/>
+                    </p:column>
+
+                    <p:column headerText="login">
+                        <h:outputText value="#{user.login}"/>
+                    </p:column>
+
+                    <p:column headerText="password">
+                        <h:outputText value="#{user.password}"/>
+                    </p:column>
+
+                    <p:column headerText="sex">
+                        <h:outputText value="#{user.sex}"/>
+                    </p:column>
+
+                    <p:column headerText="center">
+                        <h:outputText value="#{user.center.name}"/>
+                    </p:column>
+                </p:dataTable>
+            </p:layoutUnit>
+            <p:layoutUnit position="west" size="100" minSize="40" maxSize="200">
+                <p:commandLink actionListener="#{privatePage.panel1}" value="auto edit"/>/
+                <p:commandLink actionListener="#{privatePage.panel2}" value="edit"/>
+            </p:layoutUnit>
+            <p:layoutUnit position="east">
+                <ui:include src="#{privatePage.activePage}"/>
+            </p:layoutUnit>
+        </h:form>
+    </p:layout>
+</h:body>
+</html>

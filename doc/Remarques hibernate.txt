@@ -1,0 +1,9 @@
+Gestion du lazy loading :
+
+=> session.get(Class, id) :
+- les liens EAGER sont résolus à l'aide d'une jointure
+
+=> createQuery(from Class where id=..
+- les liens EAGER sont résolus par defaut a l'aide de selects supplémentaires
+
+Rq : vérifier si le point 1 est toujours vrai lorsque le nb de liens est important (jointure transformée en select ?)

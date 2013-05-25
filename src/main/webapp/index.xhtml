@@ -1,0 +1,18 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+<h:head>
+</h:head>
+<h:body>
+    <h:form>
+        <p:panel style="margin: 100px auto 5px; text-align:center; width: 300px" id="panel1" header="Authentication">
+        <p:messages id="messages"/>
+        <h:panelGrid id="grid" columns="2" >
+            <p:inputText value="#{loginPage.login}"/>
+            <p:commandButton value="login" action="#{loginPage.doLogin}" ajax="false"/>
+            <p:password value="#{loginPage.password}" redisplay="true" />
+        </h:panelGrid>
+        </p:panel>
+    </h:form>
+</h:body>
+</html>

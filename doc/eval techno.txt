@@ -1,0 +1,26 @@
+Evaluation JSF
+
+Premieres impressions :
+
+PROS
+- code concis
+- des composants JS tres puissants sont disponibles (primefaces)
+- integration Spring facile, mais pas sans problemes : doublon de gestion des controleurs (@ManagedBean et @Component)
+  - se regle simplement en fin de compte : remplacer @ManagedBean par @Component
+- le binding des composants est fait dans la vue
+- le modele de programmation imposé par jsf est proche d'une implementation MVVM (V = xhtml, M = services, VM = backed bean)
+- la gestion des sous vues avec des ui:include fonctionne bien
+- la gestion des layouts a l'air simple
+
+CONS
+- les méthodes des beans associés aux vues peuvent etre appelés de nombreuses fois (ex : selected line dans tableau). Il faut sans doute mettre en place un cache de beans (scope request ?)
+- la mise à jour des composants graphiques par ajax n'est pas automatique : il faut spécifier manuellement les composants a mettre à jour (indiquer son id). Déterminer précisemment quels sont les composants à metter à jour ne semble pas evident, et il est alors beaucoup plus simple de rafraichir toute la page, mais ce n'est pas tres efficace en bande passante
+  - il faut ajouter une couche (aop spring?) pour gerer proprement les updates de composants en ajax
+- il faut implementer scope view en spring
+- gestion des sous vues pas claire...
+- il faut un bean qui encapsule par aop les managedBean pour assurer le caching, mais également pour déchancher un rafraichissement auto apres une action (actions des boutons, mais également selection tableau...)
+- le binding de l'etat des boutons est un peu fastidieux, car il faut préciser le chemin "el" pour la visibilité, pas de convention auto possible
+
+A résoudre :
+- le refresh de toute la page provoque le reset des position des séparateurs de layout
+- du mal a maitriser la taille des differentes zones du layout
