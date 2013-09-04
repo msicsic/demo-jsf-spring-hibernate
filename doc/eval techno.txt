@@ -14,7 +14,7 @@ PROS
 
 CONS
 - les méthodes des beans associés aux vues peuvent etre appelés de nombreuses fois (ex : selected line dans tableau). Il faut sans doute mettre en place un cache de beans (scope request ?)
-- la mise à jour des composants graphiques par ajax n'est pas automatique : il faut spécifier manuellement les composants a mettre à jour (indiquer son id). Déterminer précisemment quels sont les composants à metter à jour ne semble pas evident, et il est alors beaucoup plus simple de rafraichir toute la page, mais ce n'est pas tres efficace en bande passante
+- la mise à jour des composants graphiques par ajax n'est pas automatique : il faut spécifier manuellement les composants a mettre à jour (indiquer son id). Déterminer précisemment quels sont les composants à mettre à jour ne semble pas evident, et il est alors beaucoup plus simple de rafraichir toute la page, mais ce n'est pas tres efficace en bande passante
   - il faut ajouter une couche (aop spring?) pour gerer proprement les updates de composants en ajax
 - il faut implementer scope view en spring
 - gestion des sous vues pas claire...
